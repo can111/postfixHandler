@@ -12,7 +12,19 @@ class Master:
         pass
 
     async def get_postconf(self, info: dict):
-        pass
+        try:
+            assert isinstance(info, dict)
+            parameter = info['variables']
+            args = ['-f', parameter]
+        except AssertionError:
+            # wrong data input
+            return []
+        except KeyError:
+            # variables not found
+            return []
+        else:
+            output, error, code = await self.basic_process(self.postconf, args)
+            return output, error
 
     async def del_postconf(self, info: dict):
         pass
