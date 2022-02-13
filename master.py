@@ -30,7 +30,7 @@ class Master:
         try:
             assert isinstance(info, dict)
             parameter = info['variables']
-            args = ['-f', parameter]
+            args = ['-#', parameter]
         except AssertionError:
             # wrong data input
             return []
