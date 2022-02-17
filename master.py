@@ -9,7 +9,13 @@ class Master:
         self.postmap = '/usr/sbin/postmap'
 
     async def basic_process(self, cmd, params: list) -> (bytes, bytes, int):
-        pass
+        proc = await asyncio.create_subprocess_exec(
+            cmd, *params,
+            stdout=asyncio.subprocess.PIPE,
+            stderr=asyncio.subprocess.PIPE
+            )
+        data, err = await proc.communicate()
+        return data, err, proc.returncode
 
     async def get_postconf(self, info: dict):
         try:
