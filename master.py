@@ -58,10 +58,22 @@ class Master:
             return output, error
 
     async def get_postmap(self, info: dict):
-        pass
+        try:
+            assert isinstance(info, dict)
+        except AssertionError:
+            # wrong data input
+            return []
 
     async def del_postmap(self, info: dict):
-        pass
+        try:
+            assert isinstance(info, dict)
+        except AssertionError:
+            # wrong data input
+            return []
 
     async def put_postmap(self, info: dict):
-        pass
+        try:
+            assert isinstance(info, dict)
+        except AssertionError:
+            # wrong data input
+            return []
