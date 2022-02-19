@@ -69,6 +69,9 @@ class Master:
         except AssertionError:
             # wrong data input
             return []
+        except KeyError:
+            # variables not found
+            return []
 
     async def del_postmap(self, info: dict):
         try:
@@ -76,10 +79,16 @@ class Master:
         except AssertionError:
             # wrong data input
             return []
+        except KeyError:
+            # variables not found
+            return []
 
     async def put_postmap(self, info: dict):
         try:
             assert isinstance(info, dict)
         except AssertionError:
             # wrong data input
+            return []
+        except KeyError:
+            # variables not found
             return []
