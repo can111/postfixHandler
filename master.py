@@ -66,6 +66,7 @@ class Master:
     async def get_postmap(self, info: dict):
         try:
             assert isinstance(info, dict)
+            parameter = info['variables']
         except AssertionError:
             # wrong data input
             return []
@@ -76,6 +77,7 @@ class Master:
     async def del_postmap(self, info: dict):
         try:
             assert isinstance(info, dict)
+            parameter = info['variables']
         except AssertionError:
             # wrong data input
             return []
