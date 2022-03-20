@@ -1,8 +1,10 @@
 from aiohttp import web
+from aiohttp.web_request import Request
 
 
 class QuarantineHandler(web.View):
-
+    def __init__(self, request: Request):
+        super().__init__(request)
 
 class NotificationHandler(web.View):
 
