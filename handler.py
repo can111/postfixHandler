@@ -1,5 +1,7 @@
 from aiohttp import web
 from aiohttp.web_request import Request
+import logging
+from systemd.journal import JournalHandler
 
 
 class QuarantineHandler(web.View):
