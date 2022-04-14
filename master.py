@@ -1,6 +1,8 @@
 import asyncio
 import asyncio.queues
 import asyncio.subprocess
+import logging
+from systemd.journal import JournalHandler
 
 
 class Master:
@@ -18,6 +20,10 @@ class Master:
         return data, err, proc.returncode
 
     async def get_postconf(self, info: dict):
+        log = logging.getLogger('postfix')
+        log.addHandler(JournalHandler())
+        log.setLevel(logging.INFO)
+        log.info("posconf operation started")
         try:
             assert isinstance(info, dict)
             parameter = info['variables']
